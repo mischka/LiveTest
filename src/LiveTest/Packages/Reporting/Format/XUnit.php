@@ -47,11 +47,12 @@ class XUnit implements Format
         $numFailed = 0;
         $numErrors = 0;
 
+        /* @var $result LiveTest\TestRun\Result\Result */
         foreach ($set as $result) {
             $xmlTestcase = $dom->createElement('testcase');
 
-            $xmlTestcase->setAttribute('name', "{$result->getTest()->getName()} ({$result->getUri()})");
-            $xmlTestcase->setAttribute('file', $result->getUri());
+            $xmlTestcase->setAttribute('name', "{$result->getTest()->getName()} ({$result->getTest()->getClassName()})");
+            $xmlTestcase->setAttribute('file', $result->getTest()->getClassName());
 
             if ($result->getStatus() == Result::STATUS_FAILED) {
                 $xmlFailure = $dom->createElement('failure');
