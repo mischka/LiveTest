@@ -51,7 +51,7 @@ class XUnit implements Format
         foreach ($set as $result) {
             $xmlTestcase = $dom->createElement('testcase');
 
-            $xmlTestcase->setAttribute('name', "{$result->getTest()->getName()} ({$result->getTest()->getClassName()})");
+            $xmlTestcase->setAttribute('name', "{$result->getTest()->getName()} ({$result->getRequest()->getUri()})");
             $xmlTestcase->setAttribute('file', $result->getTest()->getClassName());
 
             if ($result->getStatus() == Result::STATUS_FAILED) {
