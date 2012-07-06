@@ -209,7 +209,6 @@ class Runner extends ArgumentRunner
     foreach ($sessions as $sessionName => $session)
     {
       $client = new Zend();
-      \Base\Debug\DebugHelper::doVarDump($session->areCookiesAllowed());
       if ($session->areCookiesAllowed())
       {
         $client->setCookieJar(new CookieJar());
