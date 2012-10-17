@@ -214,6 +214,11 @@ class Runner extends ArgumentRunner
         $client->setCookieJar(new CookieJar());
       }
       $client->setAdapter(new Curl());
+      $client->setConfig(array(
+        'maxredirects' => 0,     
+        'timeout'      => 30
+      ));
+
       $this->eventDispatcher->simpleNotify('LiveTest.Runner.InitHttpClient', array ('client' => $client, 'sessionName' => $sessionName));
       $clients[$sessionName] = $client;
     }
